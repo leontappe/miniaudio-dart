@@ -1,0 +1,22 @@
+PODS:
+  - FlutterMacOS (1.0.0)
+  - mp_audio_stream (0.0.3):
+    - FlutterMacOS
+
+DEPENDENCIES:
+  - FlutterMacOS (from `Flutter/ephemeral`)
+  - mp_audio_stream (from `Flutter/ephemeral/.symlinks/plugins/mp_audio_stream/macos`)
+
+EXTERNAL SOURCES:
+  FlutterMacOS:
+    :path: Flutter/ephemeral
+  mp_audio_stream:
+    :path: Flutter/ephemeral/.symlinks/plugins/mp_audio_stream/macos
+
+SPEC CHECKSUMS:
+  FlutterMacOS: ae6af50a8ea7d6103d888583d46bd8328a7e9811
+  mp_audio_stream: 6c773f43499f206e814f16a25e70d7d0820a2437
+
+PODFILE CHECKSUM: 6eac6b3292e5142cfc23bdeb71848a40ec51c14c
+
+COCOAPODS: 1.11.3

@@ -33,9 +33,9 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
 #endif
     float * out = (float *)pOutput;
 
-    ma_uint32 plyable_size = _ctx->buf_end - _ctx->buf_start;
+    ma_uint32 playable_size = _ctx->buf_end - _ctx->buf_start;
 
-    if (_ctx->is_exhaust && _ctx->exhaust_recover_size > plyable_size) {
+    if (_ctx->is_exhaust && _ctx->exhaust_recover_size > playable_size) {
         memset(out, 0, frame_count * sizeof(float));
         _ctx->exhaust_count++;
         return;
@@ -43,10 +43,10 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
 
     _ctx->is_exhaust = false;
 
-    if (plyable_size < frame_count) {
+    if (playable_size < frame_count) {
         // copy the buffer to the output, and fill the rest
-        memcpy(out, &_ctx->buf[_ctx->buf_start], plyable_size * sizeof(float));
-        memset(&out[plyable_size], 0, (frame_count - plyable_size) * sizeof(float));
+        memcpy(out, &_ctx->buf[_ctx->buf_start], playable_size * sizeof(float));
+        memset(&out[playable_size], 0, (frame_count - playable_size) * sizeof(float));
 
         _ctx->buf_start = _ctx->buf_end;
         _ctx->is_exhaust = true;
@@ -58,7 +58,7 @@ void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uin
 }
 
 int ma_stream_push(float* buf, int length) {
-#ifdef MP_AUDIO_STREAM_DEBUGB
+#ifdef MP_AUDIO_STREAM_DEBUG
     printf("push: length:%d _length:%d _start:%d\n", length, _ctx->buf_end, _ctx->buf_start);
     for (int i=0; i<100; i+=10) {
         for (int j=0; j<10; j++) {
